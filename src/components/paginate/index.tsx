@@ -9,24 +9,25 @@ export interface Page {
 }
 
 export default function Paginate(pageInfo: Page) {
-
     if (pageInfo.label.length > 2) {
-        if (pageInfo.actualPage !== undefined) {
-            const linkPreviousPage = (parseInt(pageInfo.actualPage) - 1 > 0) ? `/page/${parseInt(pageInfo.actualPage) - 1}` : '';
-            const linkNextPage = `/page/${parseInt(pageInfo.actualPage) + 1}`;
 
-            if (pageInfo.label.includes('Next')) {
-                return <Link to={linkNextPage} style={{ textDecoration: 'none' }}>
-                    <ArrowButton>{'>'}</ArrowButton>
-                </Link>
-            }
+        const actualPage = (pageInfo.actualPage === undefined) ? '1' : pageInfo.actualPage;
 
-            if (pageInfo.label.includes('Previous')) {
-                return <Link to={linkPreviousPage} style={{ textDecoration: 'none' }}>
-                    <ArrowButton>{'<'}</ArrowButton>
-                </Link>
-            }
+        const linkPreviousPage = (parseInt(actualPage) - 1 > 0) ? `/page/${parseInt(actualPage) - 1}` : '';
+        const linkNextPage = `/page/${parseInt(actualPage) + 1}`;
+
+        if (pageInfo.label.includes('Next')) {
+            return <Link to={linkNextPage} style={{ textDecoration: 'none' }}>
+                <ArrowButton>{'>'}</ArrowButton>
+            </Link>
         }
+
+        if (pageInfo.label.includes('Previous')) {
+            return <Link to={linkPreviousPage} style={{ textDecoration: 'none' }}>
+                <ArrowButton>{'<'}</ArrowButton>
+            </Link>
+        }
+
 
         return <span>{pageInfo.label}</span>
 

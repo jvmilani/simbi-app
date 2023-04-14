@@ -19,7 +19,7 @@ export const ItemPaginate = styled.div<Props>`
     font-size: 9px;
     margin: 5px;
 `
-export const ArrowButton = styled.a`
+export const ArrowButton = styled.div`
     min-width: 18px;
     max-width: 18px;
     min-height:18px;

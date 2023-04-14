@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Badge, BoldText, Button, Container, LightText, NormalText, Row, Title, Heart } from "./styles"
 
 export interface Projeto {
+    id_projeto: number;
     mecanismo: string;
     valor_captado: number;
     valor_aprovado: number;
@@ -19,12 +20,9 @@ export default function Card(projeto: Projeto) {
     const [isActive, setIsActive] = useState(false);
 
     const options = { style: 'currency', currency: 'BRL', minimumFractionDigits: 2, maximumFractionDigits: 3 };
-    const formatNumber = new Intl.NumberFormat('pt-BR', options);
-
+    const formatNumber = new Intl.NumberFormat('pt-BR', options);    
     const handleButtonClick = () => {
-
         setIsActive(!isActive);
-        console.log(isActive);
     }
 
     return (

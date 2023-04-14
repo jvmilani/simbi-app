@@ -19,7 +19,6 @@ export default function Home() {
         };
         fetchData();
     }, [url]);
-    console.log(pages);
 
     const contentRef = useRef<HTMLDivElement>(null);
     const handleScrollLeft = () => {
@@ -50,7 +49,7 @@ export default function Home() {
             <Container>
                 <HomeContainer ref={contentRef}>
                     {data.map(item => (
-                        <Card {...item} />
+                        <Card {...item} key={item.id_projeto} />
                     ))}
                 </HomeContainer>
                 <ScrollButtonsArea>
@@ -60,7 +59,7 @@ export default function Home() {
             </Container>
             <PaginateItemsRow>
                 {pages.map(pageItem => (
-                    <Paginate {...pageItem} actualPage={page} />
+                    <Paginate {...pageItem} actualPage={page} key={pageItem.label} />
                 ))}
             </PaginateItemsRow>
         </>
